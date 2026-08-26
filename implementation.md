@@ -104,11 +104,11 @@ Known failure modes to watch for on this problem (fill in real instances as they
 
 ## 5. Deliverables Checklist
 
-- [ ] EDA notebook
-- [ ] Baseline model + metrics
-- [ ] Imbalance-handling comparison
-- [ ] Tuned XGBoost/LightGBM model
-- [ ] SHAP interpretability layer
-- [ ] Inference function / demo
+- [x] EDA script + visualizations (Phase 1)
+- [x] Baseline model + metrics (Phase 2)
+- [x] Imbalance-handling comparison (Phase 3)
+- [ ] Tuned XGBoost/LightGBM model (Phase 4)
+- [ ] SHAP interpretability layer (Phase 5)
+- [ ] Inference function / demo (Phase 6)
 - [ ] "What broke" log (filled in)
-- [ ] 5-minute pitch script + recording
+- [ ] 5-minute pitch script + recording (Phase 7)
