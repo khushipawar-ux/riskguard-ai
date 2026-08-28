@@ -1,4 +1,4 @@
-﻿# RiskGuard AI — Card Transaction Fraud Detection & Risk Management
+# RiskGuard AI — Card Transaction Fraud Detection & Risk Management
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
@@ -42,11 +42,20 @@ riskguard-ai/
 │           └── plotting.py         # Shared dark-theme styling and save routines
 ├── scripts/
 │   ├── run_eda.py                  # Phase 1: EDA Pipeline entry point
-│   ├── train.py                    # Phase 2-4: Model training and evaluation
-│   └── explain.py                  # Phase 5: SHAP explanation generator
+│   ├── run_baseline.py             # Phase 2: Logistic Regression baseline entry point
+│   ├── run_imbalance_comparison.py # Phase 3: Imbalance strategies benchmark entry point
+│   ├── run_stronger_models.py      # Phase 4: XGBoost / LightGBM CV & Threshold Tuning
+│   └── run_explainability.py       # Phase 5: SHAP Global & Local Interpretability
 ├── tests/
 │   ├── test_data_loader.py         # Tests for dataset loading and schema validation
-│   ├── test_analysis.py            # Unit tests for pure statistical analysis functions
+│   ├── test_analysis.py            # Unit tests for statistical EDA functions
+│   ├── test_features.py            # Feature engineering tests
+│   ├── test_baseline.py            # Logistic Regression baseline tests
+│   ├── test_imbalance.py           # Imbalance strategy comparison tests
+│   ├── test_trees.py               # XGBoost and LightGBM tree model tests
+│   ├── test_threshold.py           # Decision threshold optimizer tests
+│   ├── test_trainer.py             # Stratified K-Fold CV trainer tests
+│   ├── test_shap_analyzer.py       # SHAP explainer unit tests
 │   └── test_evaluator.py           # Unit tests for business metrics evaluation
 ├── docs/
 │   └── architecture.md             # System design and technical documentation
@@ -58,59 +67,47 @@ riskguard-ai/
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Running the Pipelines
 
-### 1. Installation
-
-Clone the repository and install dependencies:
-
-```bash
-git clone https://github.com/khushipawar-ux/riskguard-ai.git
-cd riskguard-ai
-
-# Create and activate a virtual environment (optional but recommended)
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-
-# Install dependencies and local package in editable mode
-pip install -r requirements.txt
-pip install -e .
-```
-
-### 2. Configuration
-
-Copy the example configuration file:
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` to configure paths if using an existing local dataset, or leave defaults to let `kagglehub` auto-download `creditcardfraud`.
-
----
-
-## 📈 Running Phase 1: Exploratory Data Analysis (EDA)
-
-Run the full statistical and visual EDA pipeline:
-
+### 1. Phase 1: Exploratory Data Analysis (EDA)
 ```bash
 python scripts/run_eda.py
 ```
 
-Outputs will be saved in `outputs/`:
-- `01_class_imbalance.png`: Imbalance ratios and log counts
-- `02_amount_time_distributions.png`: KDE, boxplots, and CDFs of Amount and Time
-- `03_temporal_patterns.png`: Hourly volume and fraud rate patterns
-- `04_vfeature_distributions.png`: KDE comparisons for top discriminating features
-- `05_correlation_analysis.png`: Correlation matrix of PCA features with `Class`
-- `06_feature_separability.png`: Feature ranking via Cohen's d separability score
-- `eda_summary.md`: Summary metrics markdown report
+### 2. Phase 2: Logistic Regression Baseline
+```bash
+python scripts/run_baseline.py
+```
+
+### 3. Phase 3: Imbalance Strategy Comparison
+```bash
+python scripts/run_imbalance_comparison.py
+```
+
+### 4. Phase 4: Stronger Models & Decision Threshold Tuning
+```bash
+python scripts/run_stronger_models.py
+```
+Outputs saved in `outputs/phase4/`:
+- `xgboost_fraud_model.joblib`: Serialized champion model with preprocessing pipeline
+- `model_comparison.md`: 5-fold CV and test set evaluation report
+- `pr_curves_comparison.png`: Precision-Recall curves (LogReg vs XGBoost vs LightGBM)
+- `threshold_policy_curves.png`: Precision, Recall, and F1 across decision thresholds
+
+### 5. Phase 5: SHAP Interpretability Layer
+```bash
+python scripts/run_explainability.py
+```
+Outputs saved in `outputs/phase5/`:
+- `interpretability_report.md`: Global feature importance & sample flagged case breakdowns
+- `shap_global_importance.png`: Global SHAP feature ranking bar chart
+- `shap_waterfall_case_*.png`: Local risk driver waterfall charts for flagged transactions
 
 ---
 
 ## 🧪 Testing
 
-Run test suite via `pytest`:
+Run complete test suite via `pytest`:
 
 ```bash
 pytest
@@ -121,10 +118,10 @@ pytest
 ## 📋 Implementation Roadmap
 
 - [x] **Phase 1 — Setup & EDA**: Data validation, imbalance confirmation, temporal and feature distribution profiling.
-- [ ] **Phase 2 — Baseline Model**: Stratified split, Logistic Regression baseline, PR-AUC / Recall@Precision metrics.
-- [ ] **Phase 3 — Class Imbalance Handling**: Benchmarking class weighting vs SMOTE vs undersampling.
-- [ ] **Phase 4 — Stronger Models & Threshold Tuning**: Tuned XGBoost/LightGBM with explicit risk policy threshold optimization.
-- [ ] **Phase 5 — Interpretability**: Global feature importances & per-transaction SHAP reason codes.
+- [x] **Phase 2 — Baseline Model**: Stratified split, Logistic Regression baseline, PR-AUC / Recall@Precision metrics.
+- [x] **Phase 3 — Class Imbalance Handling**: Benchmarking class weighting vs SMOTE vs undersampling.
+- [x] **Phase 4 — Stronger Models & Threshold Tuning**: Tuned XGBoost/LightGBM with 5-fold Stratified CV & explicit risk policy threshold optimization.
+- [x] **Phase 5 — Interpretability**: Global feature importances & per-transaction SHAP reason codes.
 - [ ] **Phase 6 — Packaging & Inference**: Fast inference API (`transaction -> risk score -> action -> top 3 reasons`).
 - [ ] **Phase 7 — Pitch & Demonstration**: Demo UI and final evaluation benchmarks.
 

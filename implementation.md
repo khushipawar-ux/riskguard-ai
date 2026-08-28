@@ -96,9 +96,9 @@ Known failure modes to watch for on this problem (fill in real instances as they
 | Accuracy paradox | 99.9% accuracy, model never predicts fraud | Switch to PR-AUC / recall immediately |
 | SMOTE leakage | Test scores look too good | Split first, oversample only the training fold |
 | Unstratified CV | Some folds have ~0 fraud cases | Use `StratifiedKFold` |
-| Slow SHAP | Explanation step hangs on full test set | Sample ~500 flagged transactions instead |
-| — *(TBD)* | | |
-| — *(TBD)* | | |
+| Slow SHAP | Explanation step hangs on full test set | Sample ~500 background reference transactions instead |
+| Extreme LightGBM `scale_pos_weight` | Extreme `scale_pos_weight=577` pushes all probabilities to ~1.0, collapsing precision | Keep `scale_pos_weight=1.0` or moderate (5–10) in LightGBM and use explicit decision threshold tuning |
+| Suboptimal default 0.50 threshold | Default 0.50 threshold yields low precision under extreme imbalance | Implement `ThresholdOptimizer` to calibrate threshold for Max F1 (0.971) or 80% Precision (0.961) |
 
 ---
 
@@ -107,8 +107,8 @@ Known failure modes to watch for on this problem (fill in real instances as they
 - [x] EDA script + visualizations (Phase 1)
 - [x] Baseline model + metrics (Phase 2)
 - [x] Imbalance-handling comparison (Phase 3)
-- [ ] Tuned XGBoost/LightGBM model (Phase 4)
-- [ ] SHAP interpretability layer (Phase 5)
+- [x] Tuned XGBoost/LightGBM model (Phase 4)
+- [x] SHAP interpretability layer (Phase 5)
 - [ ] Inference function / demo (Phase 6)
-- [ ] "What broke" log (filled in)
+- [x] "What broke" log (filled in)
 - [ ] 5-minute pitch script + recording (Phase 7)
