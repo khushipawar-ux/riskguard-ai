@@ -103,6 +103,19 @@ Outputs saved in `outputs/phase5/`:
 - `shap_global_importance.png`: Global SHAP feature ranking bar chart
 - `shap_waterfall_case_*.png`: Local risk driver waterfall charts for flagged transactions
 
+### 6. Phase 6: Packaging, Inference & Interactive Demo UI
+```bash
+# Run CLI inference demonstration
+python scripts/run_inference.py
+
+# Launch interactive Streamlit demo application
+streamlit run src/riskguard/ui/app.py
+```
+Outputs saved in `outputs/phase6/`:
+- `production_bundle/`: Self-contained artifact bundle (`model.joblib`, `metadata.json`)
+- `sample_batch_scored.csv`: Batch transaction triage results with probabilities and risk reasons
+- `inference_summary.json`: Detailed case breakdown for archetypal transactions
+
 ---
 
 ## 🧪 Testing
@@ -122,7 +135,7 @@ pytest
 - [x] **Phase 3 — Class Imbalance Handling**: Benchmarking class weighting vs SMOTE vs undersampling.
 - [x] **Phase 4 — Stronger Models & Threshold Tuning**: Tuned XGBoost/LightGBM with 5-fold Stratified CV & explicit risk policy threshold optimization.
 - [x] **Phase 5 — Interpretability**: Global feature importances & per-transaction SHAP reason codes.
-- [ ] **Phase 6 — Packaging & Inference**: Fast inference API (`transaction -> risk score -> action -> top 3 reasons`).
-- [ ] **Phase 7 — Pitch & Demonstration**: Demo UI and final evaluation benchmarks.
+- [x] **Phase 6 — Packaging & Inference**: Fast inference engine (`transaction -> risk score -> action -> top 3 reasons`) & interactive Streamlit demo UI.
+- [ ] **Phase 7 — Pitch & Demonstration**: Pitch script and demonstration recording.
 
 ---

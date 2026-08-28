@@ -109,6 +109,6 @@ Known failure modes to watch for on this problem (fill in real instances as they
 - [x] Imbalance-handling comparison (Phase 3)
 - [x] Tuned XGBoost/LightGBM model (Phase 4)
 - [x] SHAP interpretability layer (Phase 5)
-- [ ] Inference function / demo (Phase 6)
+- [x] Inference function / demo (Phase 6)
 - [x] "What broke" log (filled in)
 - [ ] 5-minute pitch script + recording (Phase 7)
