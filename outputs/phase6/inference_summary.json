@@ -1,0 +1,174 @@
+{
+  "model_name": "XGBoost Fraud Model",
+  "operating_threshold": 0.9708575010299683,
+  "archetype_cases": [
+    {
+      "transaction_id": "Legitimate Transaction",
+      "fraud_probability": 0.0005,
+      "risk_level": "LOW",
+      "decision": "ALLOW",
+      "threshold_used": 0.9709,
+      "is_flagged": false,
+      "top_reasons": [
+        {
+          "feature": "V7",
+          "value": 1.88587890268717,
+          "shap_impact": 0.4077268664771691,
+          "direction": "INCREASES_RISK",
+          "explanation": "Behavioral component V7 (val=1.89) elevated risk by 0.408 SHAP impact"
+        },
+        {
+          "feature": "V8",
+          "value": -0.614232966299775,
+          "shap_impact": 0.38069725756999107,
+          "direction": "INCREASES_RISK",
+          "explanation": "Behavioral component V8 (val=-0.61) elevated risk by 0.381 SHAP impact"
+        },
+        {
+          "feature": "HourOfDay_scaled",
+          "value": 1.0466172347672107,
+          "shap_impact": 0.2900445437896997,
+          "direction": "INCREASES_RISK",
+          "explanation": "Timing of transaction (scaled=1.05) elevated risk by 0.290 SHAP impact"
+        }
+      ],
+      "protective_factors": [
+        {
+          "feature": "V4",
+          "value": -1.32836577843066,
+          "shap_impact": -1.1732910422887652,
+          "direction": "DECREASES_RISK",
+          "explanation": "Behavioral component V4 (val=-1.33) reduced risk by 1.173 SHAP impact"
+        },
+        {
+          "feature": "V2",
+          "value": 1.40810501967799,
+          "shap_impact": -0.44570135497488084,
+          "direction": "DECREASES_RISK",
+          "explanation": "Behavioral component V2 (val=1.41) reduced risk by 0.446 SHAP impact"
+        },
+        {
+          "feature": "V6",
+          "value": -1.30843906707795,
+          "shap_impact": -0.3578290013875812,
+          "direction": "DECREASES_RISK",
+          "explanation": "Behavioral component V6 (val=-1.31) reduced risk by 0.358 SHAP impact"
+        }
+      ],
+      "narrative_summary": "Risk Assessment: LOW (0.1% probability vs 97.1% threshold). Action: ALLOW \u2014 Approved for processing with minimal friction. Top risk drivers: V7 (Behavioral component V7 (val=1.89) elevated risk by 0.408 SHAP impact); V8 (Behavioral component V8 (val=-0.61) elevated risk by 0.381 SHAP impact); HourOfDay_scaled (Timing of transaction (scaled=1.05) elevated risk by 0.290 SHAP impact).",
+      "latency_ms": 50.64
+    },
+    {
+      "transaction_id": "Suspicious Midnight Purchase",
+      "fraud_probability": 0.016,
+      "risk_level": "LOW",
+      "decision": "ALLOW",
+      "threshold_used": 0.9709,
+      "is_flagged": false,
+      "top_reasons": [
+        {
+          "feature": "V4",
+          "value": 2.4,
+          "shap_impact": 1.5571318543609232,
+          "direction": "INCREASES_RISK",
+          "explanation": "Behavioral component V4 (val=2.40) elevated risk by 1.557 SHAP impact"
+        },
+        {
+          "feature": "V14",
+          "value": -2.1,
+          "shap_impact": 1.2571118718618528,
+          "direction": "INCREASES_RISK",
+          "explanation": "Behavioral component V14 (val=-2.10) elevated risk by 1.257 SHAP impact"
+        },
+        {
+          "feature": "V8",
+          "value": -0.614232966299775,
+          "shap_impact": 0.45548116351943463,
+          "direction": "INCREASES_RISK",
+          "explanation": "Behavioral component V8 (val=-0.61) elevated risk by 0.455 SHAP impact"
+        }
+      ],
+      "protective_factors": [
+        {
+          "feature": "HourOfDay_scaled",
+          "value": -1.8045000975286458,
+          "shap_impact": -0.6057389918435365,
+          "direction": "DECREASES_RISK",
+          "explanation": "Timing of transaction (scaled=-1.80) reduced risk by 0.606 SHAP impact"
+        },
+        {
+          "feature": "V6",
+          "value": -1.30843906707795,
+          "shap_impact": -0.492327819885686,
+          "direction": "DECREASES_RISK",
+          "explanation": "Behavioral component V6 (val=-1.31) reduced risk by 0.492 SHAP impact"
+        },
+        {
+          "feature": "V2",
+          "value": 1.40810501967799,
+          "shap_impact": -0.4397474202513695,
+          "direction": "DECREASES_RISK",
+          "explanation": "Behavioral component V2 (val=1.41) reduced risk by 0.440 SHAP impact"
+        }
+      ],
+      "narrative_summary": "Risk Assessment: LOW (1.6% probability vs 97.1% threshold). Action: ALLOW \u2014 Approved for processing with minimal friction. Top risk drivers: V4 (Behavioral component V4 (val=2.40) elevated risk by 1.557 SHAP impact); V14 (Behavioral component V14 (val=-2.10) elevated risk by 1.257 SHAP impact); V8 (Behavioral component V8 (val=-0.61) elevated risk by 0.455 SHAP impact).",
+      "latency_ms": 55.95
+    },
+    {
+      "transaction_id": "Confirmed Fraud Case",
+      "fraud_probability": 0.9997,
+      "risk_level": "CRITICAL",
+      "decision": "FLAG_FRAUD",
+      "threshold_used": 0.9709,
+      "is_flagged": true,
+      "top_reasons": [
+        {
+          "feature": "V14",
+          "value": -6.17428834800643,
+          "shap_impact": 4.232056668670848,
+          "direction": "INCREASES_RISK",
+          "explanation": "Behavioral component V14 (val=-6.17) elevated risk by 4.232 SHAP impact"
+        },
+        {
+          "feature": "V12",
+          "value": -4.68638689759229,
+          "shap_impact": 2.396346909906715,
+          "direction": "INCREASES_RISK",
+          "explanation": "Behavioral component V12 (val=-4.69) elevated risk by 2.396 SHAP impact"
+        },
+        {
+          "feature": "V10",
+          "value": -4.88114292689057,
+          "shap_impact": 2.1341938106762246,
+          "direction": "INCREASES_RISK",
+          "explanation": "Behavioral component V10 (val=-4.88) elevated risk by 2.134 SHAP impact"
+        }
+      ],
+      "protective_factors": [
+        {
+          "feature": "V26",
+          "value": 0.756334522703558,
+          "shap_impact": -0.21739066986716352,
+          "direction": "DECREASES_RISK",
+          "explanation": "Behavioral component V26 (val=0.76) reduced risk by 0.217 SHAP impact"
+        },
+        {
+          "feature": "V8",
+          "value": 1.16692694787211,
+          "shap_impact": -0.17602818729821593,
+          "direction": "DECREASES_RISK",
+          "explanation": "Behavioral component V8 (val=1.17) reduced risk by 0.176 SHAP impact"
+        },
+        {
+          "feature": "V2",
+          "value": 2.46267526851135,
+          "shap_impact": -0.17022605620557443,
+          "direction": "DECREASES_RISK",
+          "explanation": "Behavioral component V2 (val=2.46) reduced risk by 0.170 SHAP impact"
+        }
+      ],
+      "narrative_summary": "Risk Assessment: CRITICAL (100.0% probability vs 97.1% threshold). Action: FLAG_FRAUD \u2014 Blocked immediately due to high fraud probability exceeding threshold. Top risk drivers: V14 (Behavioral component V14 (val=-6.17) elevated risk by 4.232 SHAP impact); V12 (Behavioral component V12 (val=-4.69) elevated risk by 2.396 SHAP impact); V10 (Behavioral component V10 (val=-4.88) elevated risk by 2.134 SHAP impact).",
+      "latency_ms": 55.19
+    }
+  ]
+}
