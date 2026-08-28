@@ -37,4 +37,4 @@ Thumbs.db
 
 # Large Data files (downloaded automatically via kagglehub)
 *.csv
-data/
+/data/
