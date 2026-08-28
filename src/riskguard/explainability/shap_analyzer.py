@@ -156,7 +156,7 @@ class ShapAnalyzer:
         self._explainer = shap.TreeExplainer(
             estimator,
             data=bg_data,
-            feature_perturbation="interventional",
+            feature_perturbation="tree_path_dependent",
         )
 
         expected = self._explainer.expected_value
