@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 """
 scripts/run_eda.py
 ~~~~~~~~~~~~~~~~~~
@@ -102,7 +102,8 @@ def main() -> int:
     )
 
     # ── 4. Visualise ──────────────────────────────────────────────────────────
-    output_dir = settings.output_dir
+    output_dir = Path(__file__).resolve().parents[1] / "outputs" / "phase1"
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     viz.plot_class_imbalance(stats, output_dir)
     viz.plot_amount_time_distributions(df, output_dir)

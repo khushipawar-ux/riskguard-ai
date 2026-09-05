@@ -1,7 +1,7 @@
 # RiskGuard AI — Phase 2 Baseline Metrics
 
 **Model:** Logistic Regression Baseline (class_weight='balanced')
-**Generated:** 2026-08-26 17:38 UTC
+**Generated:** 2026-09-05 06:11 UTC
 
 > ⚠️ Accuracy is intentionally excluded — on a 1:578 imbalanced dataset
 > it is a misleading metric. PR-AUC is the primary optimisation target.

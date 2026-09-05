@@ -1,7 +1,7 @@
 {
   "model_type": "XGBoost Fraud Model",
-  "threshold": 0.9708575010299683,
-  "review_threshold": 0.48542875051498413,
+  "threshold": 0.9939289093017578,
+  "review_threshold": 0.4969644546508789,
   "feature_names": [
     "V1",
     "V2",

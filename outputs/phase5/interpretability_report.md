@@ -13,16 +13,16 @@ This phase implements **SHAP (SHapley Additive exPlanations)** on the `XGBoost F
 
 | Feature          |   Mean_Abs_SHAP |   Importance_Pct |
 |:-----------------|----------------:|-----------------:|
-| V4               |        0.887788 |         15.7604  |
-| V14              |        0.423398 |          7.51636 |
-| V12              |        0.314571 |          5.58442 |
-| V8               |        0.27908  |          4.95436 |
-| HourOfDay_scaled |        0.276018 |          4.90001 |
-| V26              |        0.275917 |          4.89821 |
-| V18              |        0.230794 |          4.09717 |
-| V3               |        0.214282 |          3.80404 |
-| V16              |        0.200568 |          3.56059 |
-| V1               |        0.188332 |          3.34336 |
+| V4               |        0.81786  |         14.3384  |
+| V14              |        0.429508 |          7.52995 |
+| V8               |        0.32614  |          5.71774 |
+| V12              |        0.302997 |          5.31202 |
+| V15              |        0.234235 |          4.1065  |
+| V26              |        0.232121 |          4.06944 |
+| Amount_scaled    |        0.202044 |          3.54216 |
+| V1               |        0.198605 |          3.48186 |
+| V3               |        0.193583 |          3.39382 |
+| HourOfDay_scaled |        0.191824 |          3.36298 |
 
 ---
 
@@ -30,73 +30,73 @@ This phase implements **SHAP (SHapley Additive exPlanations)** on the `XGBoost F
 
 ### Case #1 — 🚨 **FLAGGED AS HIGH RISK / FRAUD**
 
-- **Model Fraud Probability:** `99.97%`
-- **Model Base Value:** `-6.7307`
+- **Model Fraud Probability:** `99.98%`
+- **Model Base Value:** `-6.9041`
 
 **Top Risk Drivers (Pushing Score Higher):**
-  - **V14** (`val=-6.17`): +4.2321 SHAP impact (Behavioral component V14 (val=-6.17) elevated risk by 4.232 SHAP impact)
-  - **V12** (`val=-4.69`): +2.3963 SHAP impact (Behavioral component V12 (val=-4.69) elevated risk by 2.396 SHAP impact)
-  - **V10** (`val=-4.88`): +2.1342 SHAP impact (Behavioral component V10 (val=-4.88) elevated risk by 2.134 SHAP impact)
-  - **V4** (`val=2.32`): +2.0361 SHAP impact (Behavioral component V4 (val=2.32) elevated risk by 2.036 SHAP impact)
+  - **V14** (`val=-6.17`): +2.9135 SHAP impact (Behavioral component V14 (val=-6.17) elevated risk by 2.913 SHAP impact)
+  - **V10** (`val=-4.88`): +2.1800 SHAP impact (Behavioral component V10 (val=-4.88) elevated risk by 2.180 SHAP impact)
+  - **V4** (`val=2.32`): +2.1054 SHAP impact (Behavioral component V4 (val=2.32) elevated risk by 2.105 SHAP impact)
+  - **V12** (`val=-4.69`): +1.8365 SHAP impact (Behavioral component V12 (val=-4.69) elevated risk by 1.836 SHAP impact)
 
 **Top Protective Factors (Pushing Score Lower):**
-  - **V26** (`val=0.76`): -0.2174 SHAP impact (Behavioral component V26 (val=0.76) reduced risk by 0.217 SHAP impact)
-  - **V8** (`val=1.17`): -0.1760 SHAP impact (Behavioral component V8 (val=1.17) reduced risk by 0.176 SHAP impact)
-  - **V2** (`val=2.46`): -0.1702 SHAP impact (Behavioral component V2 (val=2.46) reduced risk by 0.170 SHAP impact)
-  - **V5** (`val=-1.37`): -0.1283 SHAP impact (Behavioral component V5 (val=-1.37) reduced risk by 0.128 SHAP impact)
+  - **V2** (`val=2.46`): -0.1976 SHAP impact (Behavioral component V2 (val=2.46) reduced risk by 0.198 SHAP impact)
+  - **V6** (`val=-0.95`): -0.1603 SHAP impact (Behavioral component V6 (val=-0.95) reduced risk by 0.160 SHAP impact)
+  - **V8** (`val=1.17`): -0.1290 SHAP impact (Behavioral component V8 (val=1.17) reduced risk by 0.129 SHAP impact)
+  - **V15** (`val=0.59`): -0.1255 SHAP impact (Behavioral component V15 (val=0.59) reduced risk by 0.125 SHAP impact)
 
 > **Risk Analyst Summary:**
 > Decision: FLAGGED FOR INVESTIGATION | Fraud Probability: 100.0%
-Key risk triggers: V14 (+4.232), V12 (+2.396), V10 (+2.134), V4 (+2.036).
-Top protective factor: V26.
+Key risk triggers: V14 (+2.913), V10 (+2.180), V4 (+2.105), V12 (+1.836).
+Top protective factor: V2.
 
 ---
 
 ### Case #2 — 🚨 **FLAGGED AS HIGH RISK / FRAUD**
 
-- **Model Fraud Probability:** `99.98%`
-- **Model Base Value:** `-6.7307`
+- **Model Fraud Probability:** `99.97%`
+- **Model Base Value:** `-6.9041`
 
 **Top Risk Drivers (Pushing Score Higher):**
-  - **V14** (`val=-9.07`): +3.0097 SHAP impact (Behavioral component V14 (val=-9.07) elevated risk by 3.010 SHAP impact)
-  - **V4** (`val=3.32`): +2.6451 SHAP impact (Behavioral component V4 (val=3.32) elevated risk by 2.645 SHAP impact)
-  - **V12** (`val=-4.61`): +1.9684 SHAP impact (Behavioral component V12 (val=-4.61) elevated risk by 1.968 SHAP impact)
-  - **V10** (`val=-5.05`): +1.3102 SHAP impact (Behavioral component V10 (val=-5.05) elevated risk by 1.310 SHAP impact)
+  - **V4** (`val=3.32`): +2.0506 SHAP impact (Behavioral component V4 (val=3.32) elevated risk by 2.051 SHAP impact)
+  - **V12** (`val=-4.61`): +1.9278 SHAP impact (Behavioral component V12 (val=-4.61) elevated risk by 1.928 SHAP impact)
+  - **V14** (`val=-9.07`): +1.7930 SHAP impact (Behavioral component V14 (val=-9.07) elevated risk by 1.793 SHAP impact)
+  - **V10** (`val=-5.05`): +1.7592 SHAP impact (Behavioral component V10 (val=-5.05) elevated risk by 1.759 SHAP impact)
 
 **Top Protective Factors (Pushing Score Lower):**
-  - **V2** (`val=12.79`): -0.2744 SHAP impact (Behavioral component V2 (val=12.79) reduced risk by 0.274 SHAP impact)
-  - **V6** (`val=5.76`): -0.2143 SHAP impact (Behavioral component V6 (val=5.76) reduced risk by 0.214 SHAP impact)
-  - **V5** (`val=-4.80`): -0.2023 SHAP impact (Behavioral component V5 (val=-4.80) reduced risk by 0.202 SHAP impact)
-  - **V22** (`val=-8.89`): -0.1527 SHAP impact (Behavioral component V22 (val=-8.89) reduced risk by 0.153 SHAP impact)
+  - **V22** (`val=-8.89`): -0.3484 SHAP impact (Behavioral component V22 (val=-8.89) reduced risk by 0.348 SHAP impact)
+  - **V2** (`val=12.79`): -0.2312 SHAP impact (Behavioral component V2 (val=12.79) reduced risk by 0.231 SHAP impact)
+  - **V27** (`val=1.27`): -0.1111 SHAP impact (Behavioral component V27 (val=1.27) reduced risk by 0.111 SHAP impact)
+  - **V6** (`val=5.76`): -0.0700 SHAP impact (Behavioral component V6 (val=5.76) reduced risk by 0.070 SHAP impact)
 
 > **Risk Analyst Summary:**
 > Decision: FLAGGED FOR INVESTIGATION | Fraud Probability: 100.0%
-Key risk triggers: V14 (+3.010), V4 (+2.645), V12 (+1.968), V10 (+1.310).
-Top protective factor: V2.
+Key risk triggers: V4 (+2.051), V12 (+1.928), V14 (+1.793), V10 (+1.759).
+Top protective factor: V22.
 
 ---
 
 ### Case #3 — 🚨 **FLAGGED AS HIGH RISK / FRAUD**
 
-- **Model Fraud Probability:** `99.95%`
-- **Model Base Value:** `-6.7307`
+- **Model Fraud Probability:** `99.96%`
+- **Model Base Value:** `-6.9041`
 
 **Top Risk Drivers (Pushing Score Higher):**
-  - **V14** (`val=-7.50`): +4.0545 SHAP impact (Behavioral component V14 (val=-7.50) elevated risk by 4.054 SHAP impact)
-  - **V4** (`val=3.98`): +2.5946 SHAP impact (Behavioral component V4 (val=3.98) elevated risk by 2.595 SHAP impact)
-  - **V12** (`val=-7.13`): +2.1719 SHAP impact (Behavioral component V12 (val=-7.13) elevated risk by 2.172 SHAP impact)
-  - **V10** (`val=-5.52`): +1.9114 SHAP impact (Behavioral component V10 (val=-5.52) elevated risk by 1.911 SHAP impact)
+  - **V14** (`val=-7.50`): +2.6552 SHAP impact (Behavioral component V14 (val=-7.50) elevated risk by 2.655 SHAP impact)
+  - **V10** (`val=-5.52`): +2.4308 SHAP impact (Behavioral component V10 (val=-5.52) elevated risk by 2.431 SHAP impact)
+  - **V4** (`val=3.98`): +2.0572 SHAP impact (Behavioral component V4 (val=3.98) elevated risk by 2.057 SHAP impact)
+  - **V12** (`val=-7.13`): +1.8856 SHAP impact (Behavioral component V12 (val=-7.13) elevated risk by 1.886 SHAP impact)
 
 **Top Protective Factors (Pushing Score Lower):**
-  - **V8** (`val=1.22`): -0.2967 SHAP impact (Behavioral component V8 (val=1.22) reduced risk by 0.297 SHAP impact)
-  - **V2** (`val=2.35`): -0.2587 SHAP impact (Behavioral component V2 (val=2.35) reduced risk by 0.259 SHAP impact)
-  - **V26** (`val=-0.37`): -0.1275 SHAP impact (Behavioral component V26 (val=-0.37) reduced risk by 0.128 SHAP impact)
-  - **V6** (`val=-1.28`): -0.1124 SHAP impact (Behavioral component V6 (val=-1.28) reduced risk by 0.112 SHAP impact)
+  - **V2** (`val=2.35`): -0.2694 SHAP impact (Behavioral component V2 (val=2.35) reduced risk by 0.269 SHAP impact)
+  - **V8** (`val=1.22`): -0.1903 SHAP impact (Behavioral component V8 (val=1.22) reduced risk by 0.190 SHAP impact)
+  - **V6** (`val=-1.28`): -0.0976 SHAP impact (Behavioral component V6 (val=-1.28) reduced risk by 0.098 SHAP impact)
+  - **V27** (`val=0.62`): -0.0903 SHAP impact (Behavioral component V27 (val=0.62) reduced risk by 0.090 SHAP impact)
 
 > **Risk Analyst Summary:**
 > Decision: FLAGGED FOR INVESTIGATION | Fraud Probability: 100.0%
-Key risk triggers: V14 (+4.054), V4 (+2.595), V12 (+2.172), V10 (+1.911).
-Top protective factor: V8.
+Key risk triggers: V14 (+2.655), V10 (+2.431), V4 (+2.057), V12 (+1.886).
+Top protective factor: V2.
 
 
 ---

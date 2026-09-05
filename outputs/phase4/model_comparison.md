@@ -13,7 +13,7 @@ This phase evaluates gradient boosted decision tree architectures (**XGBoost** a
 
 | Model Architecture | 5-Fold Mean PR-AUC | 5-Fold Mean Best F1 |
 |:---|:---:|:---:|
-| **XGBoostFraudModel** | 0.8233 ± 0.0345 | 0.8439 |
+| **XGBoostFraudModel** | 0.8286 ± 0.0268 | 0.8378 |
 | **LightGBMFraudModel** | 0.5878 ± 0.1255 | 0.6811 |
 
 ---
@@ -23,7 +23,7 @@ This phase evaluates gradient boosted decision tree architectures (**XGBoost** a
 | Model | PR-AUC (Primary) | Best F1 | F1 @ t=0.50 | Recall @ ≥80% Prec | Confusion Matrix (t=0.50) |
 |:---|:---:|:---:|:---:|:---:|:---|
 | **Logistic Regression Baseline** | 0.7222 | 0.8290 | 0.1046 | 0.8163 | TN=55,350 FP=1,514 FN=9 TP=89 |
-| **XGBoost Fraud Model** | 0.8420 | 0.8333 | 0.6021 | 0.8367 | TN=56,760 FP=104 FN=11 TP=87 |
+| **XGBoost Fraud Model** | 0.8468 | 0.8268 | 0.6035 | 0.8061 | TN=56,763 FP=101 FN=12 TP=86 |
 | **LightGBM Fraud Model** | 0.5997 | 0.7011 | 0.5506 | 0.6224 | TN=56,783 FP=81 FN=30 TP=68 |
 
 ---
@@ -34,11 +34,11 @@ The default threshold of 0.50 is suboptimal under extreme class imbalance. Below
 
 | Policy | threshold | precision | recall | f1 | total_cost | TP | FP | TN | FN |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Standard Baseline (0.50) | 0.5 | 0.4555 | 0.8878 | 0.6021 | 8100.0 | 87.0 | 104.0 | 56760.0 | 11.0 |
-| Max F1 Policy | 0.9709 | 0.8511 | 0.8163 | 0.8333 | 9350.0 | 80.0 | 14.0 | 56850.0 | 18.0 |
-| Target Precision >=80% | 0.9606 | 0.8039 | 0.8367 | 0.82 | 8500.0 | 82.0 | 20.0 | 56844.0 | 16.0 |
-| Target Precision >=90% | 0.995 | 0.9103 | 0.7245 | 0.8068 | 13675.0 | 71.0 | 7.0 | 56857.0 | 27.0 |
-| Cost-Optimal Policy | 0.6945 | 0.5959 | 0.8878 | 0.7131 | 6975.0 | 87.0 | 59.0 | 56805.0 | 11.0 |
+| Standard Baseline (0.50) | 0.5 | 0.4599 | 0.8776 | 0.6035 | 8525.0 | 86.0 | 101.0 | 56763.0 | 12.0 |
+| Max F1 Policy | 0.9939 | 0.9136 | 0.7551 | 0.8268 | 12175.0 | 74.0 | 7.0 | 56857.0 | 24.0 |
+| Target Precision >=80% | 0.9735 | 0.8061 | 0.8061 | 0.8061 | 9975.0 | 79.0 | 19.0 | 56845.0 | 19.0 |
+| Target Precision >=90% | 0.9939 | 0.9136 | 0.7551 | 0.8268 | 12175.0 | 74.0 | 7.0 | 56857.0 | 24.0 |
+| Cost-Optimal Policy | 0.5862 | 0.5309 | 0.8776 | 0.6615 | 7900.0 | 86.0 | 76.0 | 56788.0 | 12.0 |
 
 ---
 
